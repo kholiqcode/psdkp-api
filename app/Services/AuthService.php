@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Events\UserActivationEmail;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 class AuthService
@@ -41,6 +42,8 @@ class AuthService
             $otp = rand(100000, 999999);
             $otpExpiredIn2Minute = now()->addMinutes(2)->format('Y-m-d H:i:s');
 
+            DB::beginTransaction();
+
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -49,18 +52,24 @@ class AuthService
                 'otp_expired_at' => $otpExpiredIn2Minute
             ]);
 
-            if ($user) {
-                event(new UserActivationEmail($user));
+            $user->assignRole('user');
 
-                $token = JWTAuth::fromUser($user);
-
-                $payload = ['token' => $token, 'user' => $user];
-
-                return $payload;
+            if (!$user) {
+                DB::rollBack();
+                throw new \Exception('Register Failed');
             }
 
-            throw new \Exception('Register Failed');
+            event(new UserActivationEmail($user));
+
+            $token = JWTAuth::fromUser($user);
+
+            $payload = ['token' => $token, 'user' => $user];
+
+            DB::commit();
+
+            return $payload;
         } catch (\Exception $e) {
+            DB::rollBack();
             throw $e;
         }
     }
