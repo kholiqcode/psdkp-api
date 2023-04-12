@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,8 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('register', [AuthController::class, 'register'])->name('auth.register');
 
     Route::post('otp-verification', [AuthController::class, 'verifyOtp'])->middleware('auth.jwt')->name('auth.verify_otp');
+});
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::post('users/verify', [AdminController::class, 'verifyUser'])->middleware('auth.jwt')->name('admin.users.verify');
 });

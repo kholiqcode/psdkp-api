@@ -40,7 +40,7 @@ class AuthController extends Controller
     {
         try {
             $verificationService = new VerificationService($request);
-            $payload = $verificationService->verify($request);
+            $payload = $verificationService->verifyOtp($request);
 
             return ResponseFormatter::success($payload, 'Verify Successfully');
         } catch (\Exception $e) {

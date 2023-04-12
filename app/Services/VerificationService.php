@@ -7,7 +7,7 @@ use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 class VerificationService
 {
-    public function verify($request)
+    public function verifyOtp($request)
     {
         try {
             $user = User::where('email', $request->email)->first();
@@ -36,6 +36,17 @@ class VerificationService
 
 
             return $payload;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function verifyUser($request)
+    {
+        try {
+            $user = User::find($request->id);
+            $user->is_verified = true;
+            $user->save();
         } catch (\Exception $e) {
             throw $e;
         }
