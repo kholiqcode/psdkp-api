@@ -16,6 +16,10 @@ class VerificationService
                 throw new \Exception('User Not Found');
             }
 
+            if ($user->email_verified_at) {
+                throw new \Exception('Email Already Verified');
+            }
+
             if ($user->otp != $request->otp) {
                 throw new \Exception('OTP Not Match');
             }

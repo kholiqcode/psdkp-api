@@ -6,7 +6,7 @@ use App\Helpers\ResponseFormatter;
 use App\Services\VerificationService;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class UserController extends Controller
 {
     public function verifyUser(Request $request)
     {
