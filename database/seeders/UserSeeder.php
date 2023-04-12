@@ -16,14 +16,16 @@ class UserSeeder extends Seeder
             'id' => 1,
             'name' => 'Admin',
             'email' => 'admin@mail.com',
-            'password' => '$2y$10$Fb50NW68CP6tJXNSAXllYegXwMS8HvvBwY4.Ws8r23ZCeQnOnVb6.', // password
+            'password' => 'password',
+            'email_verified_at' => now(),
+            'is_verified' => true,
         ])->assignRole('admin');
-        
+
         \App\Models\User::create([
             'id' => 2,
             'name' => 'User',
             'email' => 'user@mail.com',
-            'password' => '$2y$10$Fb50NW68CP6tJXNSAXllYegXwMS8HvvBwY4.Ws8r23ZCeQnOnVb6.', // password
+            'password' => 'password',
         ])->assignRole('user');
     }
 }
