@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\UserActivationEmail;
 use App\Models\User;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
@@ -49,6 +50,7 @@ class AuthService
             ]);
 
             if ($user) {
+                event(new UserActivationEmail($user));
 
                 $token = JWTAuth::fromUser($user);
 
