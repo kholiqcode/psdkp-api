@@ -1,0 +1,496 @@
+{
+	"info": {
+		"_postman_id": "c2e85c40-11f4-432b-b69d-a4272687600d",
+		"name": "PSDKP API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13807671"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"user@mail.com\",\n    \"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Abdul Kholiq\",\n    \"email\":\"kholiqdev@gmail.com\",\n    \"password\":\"password\",\n    \"password_confirmation\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OTP Verification",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vcHNka3AtYXBpLnRlc3QvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODEzNTE5ODYsImV4cCI6MTY4MTU2Nzk4NiwibmJmIjoxNjgxMzUxOTg2LCJqdGkiOiJlRVlVUFJ0OFZZVU9ITGtQIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJlbWFpbF92ZXJpZmllZF9hdCI6IjIwMjMtMDQtMTNUMDE6NTY6NDguMDAwMDAwWiIsImlzX3ZlcmlmaWVkIjoxfQ.DHqexjCZvZ_9PTN2Gi5_x4lTUUEQIPDfs9kVEFDW9_I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"otp\":423168\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/otp-verification",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"otp-verification"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Verify",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vcHNka3AtYXBpLnRlc3QvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODEzNTAyNDksImV4cCI6MTY4MTU2NjI0OSwibmJmIjoxNjgxMzUwMjQ5LCJqdGkiOiJFc3ZWbjJPeVNmenRpNmFvIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJlbWFpbF92ZXJpZmllZF9hdCI6IjIwMjMtMDQtMTNUMDE6MzA6MzguMDAwMDAwWiIsImlzX3ZlcmlmaWVkIjoxfQ.dEE6CVo91ooUUr7qlnPiOeuGYTzBIvefjwxKPDq4HFE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/verify",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vcHNka3AtYXBpLnRlc3QvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODEzNTE4NjgsImV4cCI6MTY4MTU2Nzg2OCwibmJmIjoxNjgxMzUxODY4LCJqdGkiOiJWeDlOUXZmQXBJVGFZOWl1Iiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJlbWFpbF92ZXJpZmllZF9hdCI6IjIwMjMtMDQtMTNUMDE6NTY6NDguMDAwMDAwWiIsImlzX3ZlcmlmaWVkIjoxfQ.K7s7lW93NmQFtUewHQbsOeTg7Hji1bRPdIMx1a-I-Kg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"test 1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/edit",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vcHNka3AtYXBpLnRlc3QvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODEzNTIyMTYsImV4cCI6MTY4MTU2ODIxNiwibmJmIjoxNjgxMzUyMjE2LCJqdGkiOiJ1RTEzNWZTN1ZIUDFJcmxiIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJlbWFpbF92ZXJpZmllZF9hdCI6IjIwMjMtMDQtMTNUMDE6NTY6NDguMDAwMDAwWiIsImlzX3ZlcmlmaWVkIjoxfQ.eV1dDWF0nyUj-SA_ZOHMaG2cpMu-ZXTtXIB06xgjTqU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/delete",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ship",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vcHNka3AtYXBpLnRlc3QvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODEzNTA5NjMsImV4cCI6MTY4MTU2Njk2MywibmJmIjoxNjgxMzUwOTYzLCJqdGkiOiJxb05BdFNwaVFSWUNZU1htIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJlbWFpbF92ZXJpZmllZF9hdCI6IjIwMjMtMDQtMTNUMDE6NTU6NTkuMDAwMDAwWiIsImlzX3ZlcmlmaWVkIjoxfQ.TlshSCYvYyOOdtqAunzAvTT1GAX7ZBw-s4JzTseXBLc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "JKLMNBC",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Kapal Pesiar",
+									"type": "text"
+								},
+								{
+									"key": "owner_name",
+									"value": "Bayu Saputra",
+									"type": "text"
+								},
+								{
+									"key": "owner_street_address",
+									"value": "Jember",
+									"type": "text"
+								},
+								{
+									"key": "ship_size",
+									"value": "800",
+									"type": "text"
+								},
+								{
+									"key": "photo_file",
+									"type": "file",
+									"src": "/Users/macbook-pro-kholiq/Downloads/blank.pdf"
+								},
+								{
+									"key": "permission_number",
+									"value": "AB/6748/2023/7789",
+									"type": "text"
+								},
+								{
+									"key": "permission_document_file",
+									"type": "file",
+									"src": "/Users/macbook-pro-kholiq/Downloads/blank.pdf"
+								},
+								{
+									"key": "total_crew",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/ships/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"ships",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vcHNka3AtYXBpLnRlc3QvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODEzNTA5NjMsImV4cCI6MTY4MTU2Njk2MywibmJmIjoxNjgxMzUwOTYzLCJqdGkiOiJxb05BdFNwaVFSWUNZU1htIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJlbWFpbF92ZXJpZmllZF9hdCI6IjIwMjMtMDQtMTNUMDE6NTU6NTkuMDAwMDAwWiIsImlzX3ZlcmlmaWVkIjoxfQ.TlshSCYvYyOOdtqAunzAvTT1GAX7ZBw-s4JzTseXBLc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "JKLMNBC",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Kapal Pesiar 2",
+									"type": "text"
+								},
+								{
+									"key": "owner_name",
+									"value": "Bayu Saputra",
+									"type": "text"
+								},
+								{
+									"key": "owner_street_address",
+									"value": "Jember",
+									"type": "text"
+								},
+								{
+									"key": "ship_size",
+									"value": "800",
+									"type": "text"
+								},
+								{
+									"key": "photo_file",
+									"type": "file",
+									"src": "/Users/macbook-pro-kholiq/Downloads/blank.pdf"
+								},
+								{
+									"key": "permission_number",
+									"value": "AB/6748/2023/7789",
+									"type": "text"
+								},
+								{
+									"key": "permission_document_file",
+									"type": "file",
+									"src": "/Users/macbook-pro-kholiq/Downloads/blank.pdf"
+								},
+								{
+									"key": "total_crew",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/ships/edit",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"ships",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/ships?page=1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"ships"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vcHNka3AtYXBpLnRlc3QvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODEzNTE4MDMsImV4cCI6MTY4MTU2NzgwMywibmJmIjoxNjgxMzUxODAzLCJqdGkiOiJZOFVIWlVxRHFWME9KUXhsIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJlbWFpbF92ZXJpZmllZF9hdCI6IjIwMjMtMDQtMTNUMDE6NTY6NDguMDAwMDAwWiIsImlzX3ZlcmlmaWVkIjoxfQ.6cCN-pX9vgjvnJzoRHTfBFLPU--VzrD15eslRGcW2Ak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/ships/verify",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"ships",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vcHNka3AtYXBpLnRlc3QvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODEzNTIyMTYsImV4cCI6MTY4MTU2ODIxNiwibmJmIjoxNjgxMzUyMjE2LCJqdGkiOiJ1RTEzNWZTN1ZIUDFJcmxiIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJlbWFpbF92ZXJpZmllZF9hdCI6IjIwMjMtMDQtMTNUMDE6NTY6NDguMDAwMDAwWiIsImlzX3ZlcmlmaWVkIjoxfQ.eV1dDWF0nyUj-SA_ZOHMaG2cpMu-ZXTtXIB06xgjTqU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/delete",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
