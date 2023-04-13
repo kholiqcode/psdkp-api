@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ResponseFormatter;
+use App\Http\Requests\Ship\DeleteShipRequest;
 use App\Http\Requests\Ship\RegisterShipRequest;
 use App\Http\Requests\Ship\VerifyShipRequest;
 use App\Services\ShipService;
@@ -29,6 +30,19 @@ class ShipController extends Controller
             $ship = $shipService->verify($request->validated());
 
             return ResponseFormatter::success($ship, 'Ship verified successfully', 204);
+        } catch (\Exception $e) {
+            return ResponseFormatter::error($e->getMessage());
+        }
+    }
+
+    public function deleteShip(DeleteShipRequest $request)
+    {
+        try {
+            $shipService = new ShipService();
+
+            $ship = $shipService->delete($request->validated());
+
+            return ResponseFormatter::success($ship, 'Ship deleted successfully', 204);
         } catch (\Exception $e) {
             return ResponseFormatter::error($e->getMessage());
         }

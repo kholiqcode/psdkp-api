@@ -71,6 +71,31 @@ class ShipService
         }
     }
 
+    public function delete($request)
+    {
+        try {
+            $ship = Ship::find($request['id']);
+
+            if (!$ship) {
+                throw new \Exception('Ship not found');
+            }
+
+            $ship->delete();
+
+            if ($ship?->permission_document_path) {
+                Storage::disk('public')->delete($ship->permission_document_path);
+            }
+
+            if ($ship?->photo_path) {
+                Storage::disk('public')->delete($ship->photo_path);
+            }
+
+            return compact(['ship']);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
     private function uploadFile($file, $path)
     {
         $fileName = strtolower($file->getFilename() . "_" . date('d-m-Y') . "_" . Str::random(5) . '.' . $file->extension());
