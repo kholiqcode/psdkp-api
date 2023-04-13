@@ -55,4 +55,17 @@ class VerificationService
             throw $e;
         }
     }
+
+    public function update($request)
+    {
+        try {
+            $user = JWTAuth::user();
+            $user->name = $request['name'];
+            $user->save();
+
+            return $user;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }
