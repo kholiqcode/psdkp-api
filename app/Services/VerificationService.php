@@ -10,7 +10,7 @@ class VerificationService
     public function verifyOtp($request)
     {
         try {
-            $user = User::where('email', $request->email)->first();
+            $user = JWTAuth::user();
 
             if (!$user) {
                 throw new \Exception('User Not Found');
