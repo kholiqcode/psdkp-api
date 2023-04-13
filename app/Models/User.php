@@ -39,7 +39,8 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
         'otp',
         'otp_expired_at',
-        'roles'
+        'roles',
+        'permissions'
     ];
 
     /**
@@ -49,6 +50,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'otp_expired_at' => 'datetime',
     ];
 
     // Rest omitted for brevity
