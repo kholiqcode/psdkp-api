@@ -29,7 +29,7 @@ Route::group(['prefix' => 'users', 'middleware' => ['auth.jwt']], function () {
 
 Route::group(['prefix' => 'ships'], function () {
     Route::group(['middleware' => ['auth.jwt']], function () {
-        Route::post('register', [ShipController::class, 'registerShip'])->middleware(['permission:ship.register'])->name('ships.register');
+        Route::post('register', [ShipController::class, 'registerShip'])->middleware(['permission:ship.create'])->name('ships.register');
         Route::post('verify', [ShipController::class, 'verifyShip'])->middleware(['permission:ship.verify'])->name('ships.verify');
         Route::delete('delete', [ShipController::class, 'deleteShip'])->middleware(['permission:ship.delete'])->name('ships.delete');
     });

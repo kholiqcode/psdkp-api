@@ -26,6 +26,8 @@ class UserSeeder extends Seeder
             'name' => 'User',
             'email' => 'user@mail.com',
             'password' => 'password',
+            'email_verified_at' => now(),
+            'is_verified' => true,
         ])->assignRole('user');
     }
 }

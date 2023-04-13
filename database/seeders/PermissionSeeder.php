@@ -47,6 +47,6 @@ class PermissionSeeder extends Seeder
         $roleAdmin->givePermissionTo(Permission::all());
 
         $roleUser = Role::create(['name' => 'user']);
-        $roleUser->givePermissionTo('user.create', 'user.read', 'user.update', 'user.edit', 'user.delete', 'user.verify.otp');
+        $roleUser->givePermissionTo('user.create', 'user.read', 'user.update', 'user.edit', 'user.delete', 'user.verify.otp', 'ship.create', 'ship.read', 'ship.update', 'ship.edit');
     }
 }
