@@ -29,6 +29,12 @@ class UserService
                 throw new \Exception('User Not Found');
             }
 
+            $currentUserLoggedId = JWTAuth::user()->id;
+
+            if ($user->id === $currentUserLoggedId) {
+                throw new \Exception('You cannot delete yourself');
+            }
+
             $user->delete();
 
             return $user;
