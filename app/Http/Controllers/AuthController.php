@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ResponseFormatter;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Http\Requests\Auth\RegisterRequest;
-use App\Http\Requests\Auth\VerifyOtpRequest;
-use App\Services\AuthService;
-use App\Services\VerificationService;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Requests\Auth\{LoginRequest, RegisterRequest, VerifyOtpRequest};
+use App\Services\{AuthService, VerificationService};
 
 class AuthController extends Controller
 {

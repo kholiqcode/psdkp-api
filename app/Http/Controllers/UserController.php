@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ResponseFormatter;
-use App\Http\Requests\User\DeleteUserRequest;
-use App\Http\Requests\User\EditUserRequest;
+use App\Http\Requests\User\{DeleteUserRequest, EditUserRequest};
 use App\Services\{UserService, VerificationService};
 use Illuminate\Http\Request;
 
