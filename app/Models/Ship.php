@@ -32,5 +32,7 @@ class Ship extends Model
      *
      * @var array<int, string>
      */
-    protected $hidden = [];
+    protected $hidden = [
+        'permission_document_path',
+    ];
 }
