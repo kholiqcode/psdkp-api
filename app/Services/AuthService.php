@@ -17,11 +17,13 @@ class AuthService
                 'password' => $request->password
             ]);
 
-            if (!auth()->user()->email_verified_at) {
+            $user = JWTAuth::user();
+
+            if (!$user?->email_verified_at) {
                 throw new \Exception('Please verify your email first');
             }
 
-            if (!auth()->user()->is_verified) {
+            if (!$user?->is_verified) {
                 throw new \Exception('Admin has not verified your account yet');
             }
 
@@ -29,8 +31,7 @@ class AuthService
                 throw new \Exception('Login Failed');
             }
 
-            $payload = ['token' => $token, 'user' => auth()->user()];
-            return $payload;
+            return compact(['token', 'user']);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -63,11 +64,9 @@ class AuthService
 
             $token = JWTAuth::fromUser($user);
 
-            $payload = ['token' => $token, 'user' => $user];
-
             DB::commit();
 
-            return $payload;
+            return compact(['token', 'user']);
         } catch (\Exception $e) {
             DB::rollBack();
             throw $e;
