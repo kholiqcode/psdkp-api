@@ -23,7 +23,8 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::group(['prefix' => 'users', 'middleware' => ['auth.jwt']], function () {
     Route::post('verify', [UserController::class, 'verifyUser'])->middleware(['permission:user.verify'])->name('users.verify');
-    Route::post('edit', [UserController::class, 'editUser'])->middleware(['permission:user.edit'])->name('users.edit');
+    Route::put('edit', [UserController::class, 'editUser'])->middleware(['permission:user.edit'])->name('users.edit');
+    Route::delete('delete', [UserController::class, 'deleteUser'])->middleware(['permission:user.delete'])->name('users.delete');
 });
 
 Route::group(['prefix' => 'ships', 'middleware' => ['auth.jwt']], function () {
