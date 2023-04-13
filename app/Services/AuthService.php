@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Events\UserActivationEmail;
 use App\Jobs\SendOtpJob;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +17,10 @@ class AuthService
                 'password' => $request->password
             ]);
 
+            if (!$token) {
+                throw new \Exception('Login Failed');
+            }
+
             $user = JWTAuth::user();
 
             if (!$user?->email_verified_at) {
@@ -28,9 +31,12 @@ class AuthService
                 throw new \Exception('Admin has not verified your account yet');
             }
 
-            if (!$token) {
-                throw new \Exception('Login Failed');
+            if ($user?->token && $user?->token !== $token) {
+                JWTAuth::setToken($user->token)->invalidate();
             }
+
+            $user->token = $token;
+            $user->save();
 
             return compact(['token', 'user']);
         } catch (\Exception $e) {
