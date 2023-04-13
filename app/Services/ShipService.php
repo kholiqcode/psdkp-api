@@ -49,6 +49,28 @@ class ShipService
         }
     }
 
+    public function verify($request)
+    {
+        try {
+            $ship = Ship::find($request['id']);
+
+            if (!$ship) {
+                throw new \Exception('Ship not found');
+            }
+
+            if ($ship->is_verified) {
+                throw new \Exception('Ship already verified');
+            }
+
+            $ship->is_verified = true;
+            $ship->save();
+
+            return compact(['ship']);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
     private function uploadFile($file, $path)
     {
         $fileName = strtolower($file->getFilename() . "_" . date('d-m-Y') . "_" . Str::random(5) . '.' . $file->extension());
