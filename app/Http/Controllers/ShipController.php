@@ -44,4 +44,16 @@ class ShipController extends Controller
             return ResponseFormatter::error($e->getMessage());
         }
     }
+
+    public function getShip()
+    {
+        try {
+            $shipService = new ShipService();
+            $ship = $shipService->getShip();
+
+            return ResponseFormatter::success($ship, 'Ship retrieved successfully');
+        } catch (\Exception $e) {
+            return ResponseFormatter::error($e->getMessage());
+        }
+    }
 }

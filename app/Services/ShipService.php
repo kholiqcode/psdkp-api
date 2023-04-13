@@ -96,6 +96,21 @@ class ShipService
         }
     }
 
+    public function getShip()
+    {
+        try {
+            $ship = Ship::paginate(10);
+
+            if (!$ship) {
+                throw new \Exception('Ship not found');
+            }
+
+            return compact(['ship']);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
     private function uploadFile($file, $path)
     {
         $fileName = strtolower($file->getFilename() . "_" . date('d-m-Y') . "_" . Str::random(5) . '.' . $file->extension());
