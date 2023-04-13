@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ships', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('code');
+            $table->string('code')->unique();
             $table->string('name');
             $table->string('owner_name');
             $table->string('owner_street_address');
