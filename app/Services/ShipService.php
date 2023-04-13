@@ -96,10 +96,43 @@ class ShipService
         }
     }
 
+    public function updateShip($request)
+    {
+        try {
+            $ship = Ship::find($request['id']);
+
+            if (!$ship) {
+                throw new \Exception('Ship not found');
+            }
+
+            foreach ($request as $key => $value) {
+                if ($key == 'photo_file') {
+                    $photoFile = request()->file('photo_file');
+                    $photoPath = $this->uploadFile($photoFile, 'ship/photos');
+
+                    $ship->photo_path = $photoPath;
+                } else if ($key == 'permission_document_file') {
+                    $permissionDocumentFile = request()->file('permission_document_file');
+                    $permissionDocumentPath = $this->uploadFile($permissionDocumentFile, 'ship/documents');
+
+                    $ship->permission_document_path = $permissionDocumentPath;
+                } else {
+                    $ship->$key = $value;
+                }
+            }
+
+            $ship->save();
+
+            return compact(['ship']);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
     public function getShip()
     {
         try {
-            $ship = Ship::paginate(10);
+            $ship = Ship::where('is_verified', true)->paginate(10);
 
             if (!$ship) {
                 throw new \Exception('Ship not found');
