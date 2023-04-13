@@ -25,6 +25,7 @@ class ResponseFormatter
      */
     public static function success($data = null, $message = 'Successfully', $code = Response::HTTP_OK)
     {
+        self::$response['meta']['code'] = $code;
         self::$response['meta']['message'] = $message;
         self::$response['data'] = $data;
 
