@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Events\UserActivationEmail;
+use App\Jobs\SendOtpJob;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
@@ -60,7 +61,10 @@ class AuthService
                 throw new \Exception('Register Failed');
             }
 
-            event(new UserActivationEmail($user));
+            // event(new UserActivationEmail($user)); // use other service for sending email
+
+            SendOtpJob::dispatch($user)->afterCommit();
+
 
             $token = JWTAuth::fromUser($user);
 
