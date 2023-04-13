@@ -39,7 +39,7 @@ class UserController extends Controller
             $userService = new UserService();
             $payload = $userService->delete($request->validated());
 
-            return ResponseFormatter::success($payload, 'User Deleted Successfully', 201);
+            return ResponseFormatter::success($payload, 'User Deleted Successfully', 204);
         } catch (\Exception $e) {
             return ResponseFormatter::error($e->getMessage(), 400);
         }
