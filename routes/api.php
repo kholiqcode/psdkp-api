@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\{UserController, AuthController, ShipController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +23,8 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::group(['prefix' => 'users', 'middleware' => ['auth.jwt']], function () {
     Route::post('verify', [UserController::class, 'verifyUser'])->middleware(['permission:user.verify'])->name('users.verify');
+});
+
+Route::group(['prefix' => 'ships', 'middleware' => ['auth.jwt']], function () {
+    Route::post('register', [ShipController::class, 'registerShip'])->middleware(['permission:ship.register'])->name('ships.register');
 });
